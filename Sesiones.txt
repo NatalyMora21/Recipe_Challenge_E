@@ -1,0 +1,25 @@
+    @Mutation(() => Users, { nullable: true })
+    async loginjwt(
+        @Arg("email") email: String,
+        @Arg("password") password: string
+
+        ):Promise<Users | null>{
+        //Trae todo los campos del usuarios
+        let userl= await Users.findOne({where:{email}});
+        console.log(userl);
+        if (!userl){
+            return null
+        }
+        let validacion= await bcrypt.compare(password,userl.password);
+        if(!validacion){
+            return null
+        }
+        const secret=process.env.JWT_SECRET_KEY;
+        const token= jwt.sign({email1:email},secret,{expiresIn:'1d'})
+        console.log(token);
+        return userl;
+    }	
+
+{"Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbDEiOiJ0YXRhbW9yQGdtYWlsLmNvbSIsImlhdCI6MTYwMTYwMzQxMSwiZXhwIjoxNjAxNjg5ODExfQ.3c6HYCpzC1GsJrhBlwilHMO67HIP2US1GffjyND6NIQ"}
+
+{"Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbDEiOiJ0YXRhbW9yQGdtYWlsLmNvbSIsImlhdCI6MTYwMTYwMzQxMSwiZXhwIjoxNjAxNjg5ODExfQ.3c6HYCpzC1GsJrhBlwilHMO67HIP2US1GffjyND6NIQ"}

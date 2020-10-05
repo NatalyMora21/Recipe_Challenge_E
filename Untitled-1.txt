@@ -1,0 +1,30 @@
+//Modulos de producción
+***
+1. npm i express apollo-server-express mysql typeorm reflect-metadata type-graphql
+
+//Modulos de desarrollo
+//Podes ejecutar typescript en Node.js
+npm i -D typescript ts-node
+//Typpos de datos de algunos modulos
+@types/express
+@types/node
+
+//Reinicionar el servidor
+nodemon
+****
+2. npm i -D typescript ts-node @types/express @types/node nodemon
+
+3. Configurar typescript
+crear archivo tsconfig.json pra qe¿ue type script sepa como compilar el codigo
+npx tsc --init 
+tsconfig.json 
+    //Decir donde va el codigo compilado
+    // "outDir": "./dist",                        /* Redirect output structure to the directory. */
+    //Decir donde está el codigo principal
+    // "rootDir": "./src",
+
+         "experimentalDecorators": true,        /* Enables experimental support for ES7 decorators. */
+     "emitDecoratorMetadata": true,  --->Utilizar type ORM sin ningún problema
+
+
+5.Crear en el package.json(Modulo ts node) un script que se encargue de convertir el condigo automaticamente.
